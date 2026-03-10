@@ -1,0 +1,100 @@
+-- roles
+insert into rol (nombre) values ('admin');
+insert into rol (nombre) values ('empleado');
+
+
+-- personas
+insert into persona (nombre, apellido, documento, telefono, email, direccion)
+values ('juan','perez','1001','3001111111','juan@mail.com','calle 10');
+
+insert into persona (nombre, apellido, documento, telefono, email, direccion)
+values ('ana','lopez','1002','3002222222','ana@mail.com','calle 20');
+
+insert into persona (nombre, apellido, documento, telefono, email, direccion)
+values ('carlos','ramirez','1003','3003333333','carlos@mail.com','calle 30');
+
+
+-- usuarios
+insert into usuario (nombreUsuario, persona_id, rol_id)
+values ('admin',1,1);
+
+insert into usuario (nombreUsuario, persona_id, rol_id)
+values ('empleado1',2,2);
+
+insert into usuario (nombreUsuario, persona_id, rol_id)
+values ('empleado2',3,2);
+
+
+-- categorias
+insert into categoria (nombre) values ('electronica');
+insert into categoria (nombre) values ('hogar');
+insert into categoria (nombre) values ('oficina');
+
+
+-- productos
+insert into producto (nombre, categoria_id, precio)
+values ('laptop',1,3500);
+
+insert into producto (nombre, categoria_id, precio)
+values ('teclado',1,80);
+
+insert into producto (nombre, categoria_id, precio)
+values ('silla',3,200);
+
+insert into producto (nombre, categoria_id, precio)
+values ('monitor',1,900);
+
+
+-- bodegas
+insert into bodega (nombre, ubicacion, capacidad, encargado_id)
+values ('bodega_central','bogota',1000,1);
+
+insert into bodega (nombre, ubicacion, capacidad, encargado_id)
+values ('bodega_norte','medellin',800,2);
+
+
+-- inventario
+insert into inventario (bodega_id, producto_id, stock)
+values (1,1,50);
+
+insert into inventario (bodega_id, producto_id, stock)
+values (1,2,100);
+
+insert into inventario (bodega_id, producto_id, stock)
+values (2,3,40);
+
+insert into inventario (bodega_id, producto_id, stock)
+values (2,4,25);
+
+
+-- movimientos
+insert into movimiento (tipo, usuario_id, bodegaOrigen_id, bodegaDestino_id)
+values ('entrada',1,null,1);
+
+insert into movimiento (tipo, usuario_id, bodegaOrigen_id, bodegaDestino_id)
+values ('salida',2,1,null);
+
+insert into movimiento (tipo, usuario_id, bodegaOrigen_id, bodegaDestino_id)
+values ('transferencia',1,1,2);
+
+
+-- detalle movimientos
+insert into detalle_movimiento (movimiento_id, producto_id, cantidad)
+values (1,1,20);
+
+insert into detalle_movimiento (movimiento_id, producto_id, cantidad)
+values (2,2,10);
+
+insert into detalle_movimiento (movimiento_id, producto_id, cantidad)
+values (3,1,5);
+
+
+-- auditoria
+insert into auditoria (usuario_id, operacion, entidad, entidad_id)
+values (1,'insert','producto',1);
+
+insert into auditoria (usuario_id, operacion, entidad, entidad_id)
+values (2,'update','inventario',1);
+
+insert into auditoria (usuario_id, operacion, entidad, entidad_id)
+values (1,'delete','producto',2);

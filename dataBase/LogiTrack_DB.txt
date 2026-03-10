@@ -1,0 +1,109 @@
+CREATE DATABASE  logiTrack;
+USE logiTrack;
+
+
+CREATE TABLE persona (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    documento VARCHAR(20) UNIQUE,
+    telefono VARCHAR(10),
+    email VARCHAR(100),
+    direccion VARCHAR(120)
+);
+
+
+CREATE TABLE rol (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE usuario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombreUsuario VARCHAR(50) UNIQUE NOT NULL,
+    persona_id BIGINT UNIQUE,
+    rol_id BIGINT NOT NULL,
+
+    FOREIGN KEY (persona_id) REFERENCES persona(id),
+    FOREIGN KEY (rol_id) REFERENCES rol(id)
+);
+
+
+
+CREATE TABLE categoria (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE producto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    categoria_id BIGINT,
+    precio DECIMAL(12,2) NOT NULL,
+
+    FOREIGN KEY (categoria_id) REFERENCES categoria(id)
+);
+
+
+CREATE TABLE bodega (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    ubicacion VARCHAR(150),
+    capacidad INT NOT NULL,
+    encargado_id BIGINT,
+
+    FOREIGN KEY (encargado_id) REFERENCES persona(id)
+);
+
+
+
+CREATE TABLE inventario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    bodega_id BIGINT NOT NULL,
+    producto_id BIGINT NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    UNIQUE (bodega_id, producto_id),
+
+
+    FOREIGN KEY (bodega_id) REFERENCES bodega(id),
+    FOREIGN KEY (producto_id) REFERENCES producto(id)
+);
+
+
+CREATE TABLE movimiento (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    tipo ENUM('ENTRADA','SALIDA','TRANSFERENCIA') NOT NULL,
+    usuario_id BIGINT NOT NULL,
+    bodegaOrigen_id BIGINT,
+    bodegaDestino_id BIGINT,
+
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    FOREIGN KEY (bodegaOrigen_id) REFERENCES bodega(id),
+    FOREIGN KEY (bodegaDestino_id) REFERENCES bodega(id)
+);
+
+
+CREATE TABLE detalle_movimiento (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    movimiento_id BIGINT NOT NULL,
+    producto_id BIGINT NOT NULL,
+    cantidad INT NOT NULL,
+
+    FOREIGN KEY (movimiento_id) REFERENCES movimiento(id),
+    FOREIGN KEY (producto_id) REFERENCES producto(id)
+);
+
+
+CREATE TABLE auditoria (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario_id BIGINT,
+    operacion ENUM('INSERT','UPDATE','DELETE') NOT NULL,
+    entidad VARCHAR(100),
+    entidad_id BIGINT,
+
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
