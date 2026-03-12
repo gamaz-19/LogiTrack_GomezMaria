@@ -1,6 +1,6 @@
 package com.s1.LogiTrack.dto.response;
 
-import com.s1.LogiTrack.model.TipoOperacion;
+import com.s1.LogiTrack.enums.TipoOperacion;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,6 @@
 package com.s1.LogiTrack.dto.request;
 
-import com.s1.LogiTrack.model.TipoOperacion;
+import com.s1.LogiTrack.enums.TipoOperacion;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;

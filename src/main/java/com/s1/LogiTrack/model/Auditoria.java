@@ -1,5 +1,6 @@
 package com.s1.LogiTrack.model;
 
+import com.s1.LogiTrack.enums.TipoOperacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

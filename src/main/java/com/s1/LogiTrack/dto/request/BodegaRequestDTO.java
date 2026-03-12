@@ -8,14 +8,16 @@ public record BodegaRequestDTO(
                 example = "Bodega Central")
         String nombre,
 
-        @Schema(description = "Ubicación de la bodega",
+        @Schema(description = "Ubicacion de la bodega",
                 example = "Bogotá")
         String ubicacion,
 
-        @Schema(description = "Capacidad máxima de almacenamiento",
+        @Schema(description = "Capacidad maxima de almacenamiento",
                 example = "5000")
         Long capacidad,
 
+        @Schema(description = "ID del empleado encargado de la bodega",
+                example = "3")
         Long encargadoId
 
 ) {

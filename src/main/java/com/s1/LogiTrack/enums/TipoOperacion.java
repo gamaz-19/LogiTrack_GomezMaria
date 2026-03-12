@@ -1,4 +1,4 @@
-package com.s1.LogiTrack.model;
+package com.s1.LogiTrack.enums;
 
 public enum TipoOperacion {
     INSERT,
