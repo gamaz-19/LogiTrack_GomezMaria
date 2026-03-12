@@ -10,13 +10,13 @@ public record MovimientoResponseDTO(
         @Schema(description = "ID del movimiento", example = "1")
         Long id,
 
-        @Schema(description = "Fecha y hora en que se realizó el movimiento", example = "2026-03-12T10:30:00")
+        @Schema(description = "Fecha y hora en que se realizo el movimiento")
         LocalDateTime fecha,
 
         @Schema(description = "Tipo de movimiento realizado", example = "ENTRADA")
         TipoMovimiento tipo,
 
-        @Schema(description = "Usuario que realizó el movimiento")
+        @Schema(description = "Usuario que realizo el movimiento")
         UsuarioResponseDTO usuario,
 
         @Schema(description = "Bodega de origen del movimiento")

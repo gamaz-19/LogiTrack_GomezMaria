@@ -10,10 +10,10 @@ public record BodegaResponseDTO(
         @Schema(description = "Nombre de la bodega", example = "Bodega Central")
         String nombre,
 
-        @Schema(description = "Ubicación de la bodega", example = "Bogotá - Zona Industrial")
+        @Schema(description = "Ubicacion de la bodega", example = "Bogotá - Zona Industrial")
         String ubicacion,
 
-        @Schema(description = "Capacidad máxima de almacenamiento de la bodega", example = "5000")
+        @Schema(description = "Capacidad maxima de almacenamiento de la bodega", example = "5000")
         Long capacidad,
 
         @Schema(description = "Persona encargada de la bodega")

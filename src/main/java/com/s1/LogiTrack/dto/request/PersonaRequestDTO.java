@@ -13,13 +13,13 @@ public record PersonaRequestDTO(
         @Schema(description = "Documento de identidad", example = "1007999211")
         String documento,
 
-        @Schema(description = "Número de teléfono", example = "3001234567")
+        @Schema(description = "Numero de telefono", example = "3001234567")
         String telefono,
 
-        @Schema(description = "Correo electrónico", example = "david@example.com")
+        @Schema(description = "Correo electronico", example = "david@example.com")
         String email,
 
-        @Schema(description = "Dirección de residencia", example = "Calle 123 #45-67")
+        @Schema(description = "Direccion de residencia", example = "Calle 123 #45-67")
         String direccion
 
 ) {

@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 
 public record ProductoRequestDTO(
 
-        @Schema(description = "Nombre del producto", example = "Televisor 55\"")
+        @Schema(description = "Nombre del producto", example = "Televisor 55")
         String nombre,
 
+        @Schema(description = "ID de la categoria a la que pertenece el producto",
+                example = "2")
         Long categoriaId,
 
         @Schema(description = "Precio del producto", example = "1200.50")

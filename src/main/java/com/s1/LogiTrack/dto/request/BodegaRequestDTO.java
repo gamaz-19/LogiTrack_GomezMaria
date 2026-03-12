@@ -9,10 +9,10 @@ public record BodegaRequestDTO(
         String nombre,
 
         @Schema(description = "Ubicacion de la bodega",
-                example = "Bogotá")
+                example = "Bogota")
         String ubicacion,
 
-        @Schema(description = "Capacidad maxima de almacenamiento",
+        @Schema(description = "Capacidad maxima de almacenamiento de la bodega",
                 example = "5000")
         Long capacidad,
 

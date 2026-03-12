@@ -7,22 +7,22 @@ public record PersonaResponseDTO(
         @Schema(description = "ID de la persona", example = "1")
         Long id,
 
-        @Schema(description = "Nombre de la persona", example = "Juan")
+        @Schema(description = "Nombre de la persona", example = "humpty")
         String nombre,
 
-        @Schema(description = "Apellido de la persona", example = "Pérez")
+        @Schema(description = "Apellido de la persona", example = "dumpty")
         String apellido,
 
         @Schema(description = "Número de documento de la persona", example = "123456789")
         String documento,
 
-        @Schema(description = "Teléfono de contacto", example = "3001234567")
+        @Schema(description = "Telefono de contacto", example = "3001234567")
         String telefono,
 
-        @Schema(description = "Correo electrónico de la persona", example = "juan.perez@email.com")
+        @Schema(description = "Correo electronico de la persona", example = "humpty.dumpty@email.com")
         String email,
 
-        @Schema(description = "Dirección de residencia", example = "Calle 45 #12-34")
+        @Schema(description = "Direccion de residencia", example = "Calle 45 #12-34")
         String direccion
 
 ) {

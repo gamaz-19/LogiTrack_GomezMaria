@@ -4,10 +4,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public record CategoriaResponseDTO(
 
-        @Schema(description = "ID de la categoría", example = "1")
+        @Schema(description = "ID de la categoria", example = "1")
         Long id,
 
-        @Schema(description = "Nombre de la categoría", example = "Electrónicos")
+        @Schema(description = "Nombre de la categoria", example = "Electronicos")
         String nombre
 
 ) {
