@@ -18,7 +18,7 @@ public class JwtService {
      *
      * Pero para clase lo dejo así para que sea más didáctico.
      */
-    private final String SECRET = "clave_super_secreta";
+    private final String SECRET = "clave_super_secreta_logitrack_2026_campus_cajasan";
     /*
      * Tiempo de expiración del token.
      * Aquí lo estoy configurando a 30 minutos.

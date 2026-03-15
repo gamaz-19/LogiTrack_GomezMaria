@@ -5,7 +5,7 @@ import com.s1.LogiTrack.dto.response.CategoriaResponseDTO;
 
 import java.util.List;
 
-public interface CategogriaService {
+public interface CategoriaService {
 
     CategoriaResponseDTO guardarCategoria(CategoriaRequestDTO dto);
 
