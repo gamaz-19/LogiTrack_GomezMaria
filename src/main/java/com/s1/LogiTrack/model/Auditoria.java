@@ -12,12 +12,14 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Table(name = "auditoria")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Auditoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
     private Long id;
 
     @Column(nullable = false)
@@ -33,5 +35,6 @@ public class Auditoria {
 
     private String entidad;
 
+    @Column(name = "entidad_id")
     private Long entidadId;
 }

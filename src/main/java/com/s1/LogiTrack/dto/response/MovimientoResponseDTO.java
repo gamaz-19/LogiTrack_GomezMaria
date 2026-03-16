@@ -5,8 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 
-public record MovimientoResponseDTO(
-
+public record MovimientoResponseDTO (
         @Schema(description = "ID del movimiento", example = "1")
         Long id,
 
@@ -24,6 +23,5 @@ public record MovimientoResponseDTO(
 
         @Schema(description = "Bodega de destino del movimiento")
         BodegaResponseDTO bodegaDestino
-
-) {
+){
 }
