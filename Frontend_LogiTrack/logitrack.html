@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogiTrack — Sistema de Bodegas</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="logitrack.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="grid-bg"></div>
+  <div class="glow-orb"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-icon"></div>
+      <div>
+        <span>LogiTrack</span>
+        <small>WAREHOUSE SYSTEM</small>
+      </div>
+    </div>
+    <h2>Bienvenido</h2>
+    <p>// Ingresa tus credenciales para continuar</p>
+    <div class="field">
+      <label>Usuario</label>
+      <input type="text" id="username" placeholder="admin" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Contraseña</label>
+      <input type="password" id="password" placeholder="••••••••">
+    </div>
+    <button class="btn-primary" id="btn-login">INGRESAR AL SISTEMA</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-hex"></div>
+      <span>LogiTrack</span>
+    </div>
+    <nav>
+      <div class="nav-section">Principal</div>
+      <div class="nav-item active" data-section="dashboard">
+        <span class="icon">◈</span> Dashboard
+      </div>
+      <div class="nav-section">Gestión</div>
+      <div class="nav-item" data-section="bodegas">
+        <span class="icon">⬡</span> Bodegas
+      </div>
+      <div class="nav-item" data-section="productos">
+        <span class="icon">◻</span> Productos
+      </div>
+      <div class="nav-item" data-section="movimientos">
+        <span class="icon">⇄</span> Movimientos
+      </div>
+      <div class="nav-section">Sistema</div>
+      <div class="nav-item" data-section="usuarios">
+        <span class="icon">◉</span> Usuarios
+      </div>
+      <div class="nav-item" data-section="auditorias">
+        <span class="icon">◎</span> Auditorías
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar" id="user-avatar">A</div>
+        <div class="user-info">
+          <div class="name" id="user-name">Admin</div>
+          <div class="role" id="user-role">ADMIN</div>
+        </div>
+        <button class="btn-logout" onclick="logout()" title="Cerrar sesión">⏻</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="section-title">Dashboard</h1>
+        <p id="section-sub">// Resumen general del sistema</p>
+      </div>
+      <div class="topbar-actions" id="topbar-actions"></div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="section active" id="section-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card c1" style="animation-delay:0s">
+            <div class="label">Bodegas</div>
+            <div class="value" id="stat-bodegas">—</div>
+            <div class="sub">registradas</div>
+          </div>
+          <div class="stat-card c2" style="animation-delay:0.05s">
+            <div class="label">Productos</div>
+            <div class="value" id="stat-productos">—</div>
+            <div class="sub">en catálogo</div>
+          </div>
+          <div class="stat-card c3" style="animation-delay:0.1s">
+            <div class="label">Movimientos</div>
+            <div class="value" id="stat-movimientos">—</div>
+            <div class="sub">registrados</div>
+          </div>
+          <div class="stat-card c4" style="animation-delay:0.15s">
+            <div class="label">Usuarios</div>
+            <div class="value" id="stat-usuarios">—</div>
+            <div class="sub">activos</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Últimos movimientos</h3>
+          </div>
+          <div id="dash-movimientos">
+            <div class="loading"><div class="spinner"></div><br>Cargando...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODEGAS -->
+      <div class="section" id="section-bodegas">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Lista de Bodegas</h3>
+            <input class="search-input" placeholder="  Buscar bodega..." id="search-bodegas" oninput="filterTable('bodegas')">
+          </div>
+          <div id="table-bodegas"><div class="loading"><div class="spinner"></div><br>Cargando...</div></div>
+        </div>
+      </div>
+
+      <!-- PRODUCTOS -->
+      <div class="section" id="section-productos">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Catálogo de Productos</h3>
+            <input class="search-input" placeholder="  Buscar producto..." id="search-productos" oninput="filterTable('productos')">
+          </div>
+          <div id="table-productos"><div class="loading"><div class="spinner"></div><br>Cargando...</div></div>
+        </div>
+      </div>
+
+      <!-- MOVIMIENTOS -->
+      <div class="section" id="section-movimientos">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Movimientos de Inventario</h3>
+            <input class="search-input" placeholder="  Buscar..." id="search-movimientos" oninput="filterTable('movimientos')">
+          </div>
+          <div id="table-movimientos"><div class="loading"><div class="spinner"></div><br>Cargando...</div></div>
+        </div>
+      </div>
+
+      <!-- USUARIOS -->
+      <div class="section" id="section-usuarios">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Usuarios del Sistema</h3>
+            <input class="search-input" placeholder="  Buscar usuario..." id="search-usuarios" oninput="filterTable('usuarios')">
+          </div>
+          <div id="table-usuarios"><div class="loading"><div class="spinner"></div><br>Cargando...</div></div>
+        </div>
+      </div>
+
+      <!-- AUDITORIAS -->
+      <div class="section" id="section-auditorias">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Registro de Auditorías</h3>
+            <input class="search-input" placeholder="  Buscar..." id="search-auditorias" oninput="filterTable('auditorias')">
+          </div>
+          <div id="table-auditorias"><div class="loading"><div class="spinner"></div><br>Cargando...</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <h3 id="modal-title">Modal</h3>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-sm accent" id="modal-confirm">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="logitrack.js"></script>
+</body>
+</html>
