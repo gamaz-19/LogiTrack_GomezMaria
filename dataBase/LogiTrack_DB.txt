@@ -1,5 +1,5 @@
-CREATE DATABASE  logiTrack;
-USE logiTrack;
+CREATE DATABASE  logitrack_gomezmaria;
+USE logitrack_gomezmaria;
 
 
 CREATE TABLE persona (
